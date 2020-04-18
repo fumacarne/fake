@@ -20,7 +20,7 @@ class Navbar extends React.Component {
        <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto">
 <li className="nav-item ml-5">
-<a className={this.getNavLinkClass("/login")}><NavLink to="/login" >Log In</NavLink></a>
+<a className={this.getNavLinkClass("/")}><NavLink to="/log out" >Log In</NavLink></a>
 </li>
 <li className="nav-item ml-5">
 <a className={this.getNavLinkClass("/signup")}><NavLink to="/signup" >Sign Up</NavLink></a>

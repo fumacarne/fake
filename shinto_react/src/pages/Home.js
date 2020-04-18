@@ -1,6 +1,9 @@
 import React from "react";
 import {Flex, Styled} from 'theme-ui';
-import Carrousel from "../components/Carrousel"
+import Carrousel from "../components/Carrousel";
+import Ball from "../components/Ball";
+import Planet from "../components/Planet";
+
 // import Logo from "../components/Logo"
 function Home(){
     return(
@@ -14,14 +17,21 @@ function Home(){
             width: '100vw',
             justifyContent: 'center',
             alignItems: 'center',
-            flexDirection: 'column'
+            flexDirection: 'row',
+            margin: '5px',
 
         }}
         >
-            <Styled.h2>KAMVAS</Styled.h2>
+            
             <Carrousel/>
+            <br></br>
+            <Planet/>
+             
+            <Ball/>
             
         </Flex>
+        
+        
     );
 }
 

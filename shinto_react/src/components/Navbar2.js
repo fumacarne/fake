@@ -3,7 +3,7 @@ import logo from "./images/logo.jpg";
 import {NavLink, withRouter}  from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-class Navbar extends React.Component {
+class Navbar2 extends React.Component {
     getNavLinkClass = (path) => {
         return this.props.location.pathname === path ? 'active' : '';
     }
@@ -20,15 +20,13 @@ class Navbar extends React.Component {
        <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ml-auto">
 <li className="nav-item ml-5">
-<a className={this.getNavLinkClass("/")}><NavLink to="/log out" >Log In</NavLink></a>
+<a className={this.getNavLinkClass("/home")}><NavLink to="/home" >Log Out</NavLink></a>
 </li>
-<li className="nav-item ml-5">
-<a className={this.getNavLinkClass("/signup")}><NavLink to="/signup" >Sign Up</NavLink></a>
-</li>
+
 </ul>
 </div>
 </nav>
     )
 }}
-Navbar = withRouter(Navbar);
-export default Navbar ;
+Navbar2 = withRouter(Navbar2);
+export default Navbar2 ;

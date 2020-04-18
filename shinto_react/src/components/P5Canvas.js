@@ -20,12 +20,26 @@ class P5Canvas extends Component {
       this.save.mousePressed(() => p.saveCanvas("myCanvas", "jpg"));
       this.clear = p.createButton("clear");
       this.clear.mousePressed(() => p.background(0));
+      this.textbox = p.createInput("");
+      this.textcolor = p.createColorPicker("");
+      this.sliderSize = p.createSlider(10, 64, 16);
+      this.sliderPositionX = p.createSlider(0, 400, 200);
+      this.sliderPositionY = p.createSlider(0, 400, 200);
+      this.paragraph = p.createP("");
       this.can.drop(p.gotFile);
     };
+
     p.draw = () => {
+      p.background(250, 250, 250, 1);
       if (p.mouseIsPressed) {
         p.stroke(this.colorPicker.color());
         p.strokeWeight(this.slider.value());
+        p.textSize(this.sliderSize.value());
+        p.text(
+          this.textbox.value(),
+          this.sliderPositionX.value(),
+          this.sliderPositionY.value()
+        );
         p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
       }
       if (p.newImage) {
@@ -66,7 +80,14 @@ class P5Canvas extends Component {
   render() {
     return (
       <>
-        <div ref={this.canvasRef} style={{ marginTop: "50px" }}></div>
+        <div
+          ref={this.canvasRef}
+          style={{
+            marginTop: "50px",
+            marginLeft: "500px",
+            marginRight: "500px"
+          }}
+        ></div>
       </>
     );
   }

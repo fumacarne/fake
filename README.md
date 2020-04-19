@@ -1,3 +1,3 @@
-# todoloo
+# KAMVAS
 
-A team based todo app for crushing task lists
+A blank space to express yourself 

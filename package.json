@@ -16,7 +16,7 @@
     "server": "nodemon --ignore 'shinto_react/*' server.js",
     "install": "cd shinto_react && npm install",
     "build": "cd shinto_react && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "cd shinto_react && npm run build"
   },
   "repository": {
     "type": "git",

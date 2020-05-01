@@ -2,10 +2,6 @@
   "name": "todoloo",
   "version": "1.0.0",
   "description": "An shared todo app from crushing team task lists",
-  "engines": {
-    "node": "6.11.1",
-    "npm": "6.13.4"
-  },
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",

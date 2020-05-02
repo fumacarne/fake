@@ -27,22 +27,6 @@ app.use(auth.handleErrors);
 //   );
 // });
 
-const csp = require("express-csp-header");
-app.use(
-  csp({
-    policies: {
-      "default-src": [csp.NONE, "https://glacial-dusk-24639.herokuapp.com/"],
-      "img-src": [
-        csp.SELF,
-        "https://glacial-dusk-24639.herokuapp.com/favicon.ico"
-      ]
-    }
-  })
-);
-
-// HTTP response header will be defined as:
-// "Content-Security-Policy: default-src 'none'; img-src 'self';"
-
 db.sequelize.sync().then(function() {
   app.listen(process.env.PORT || PORT, () => {
     console.log(`server running on ${process.env.PORT || PORT}`);

@@ -1,28 +1,23 @@
+const bodyparser = require("body-parser");
+const cors = require("cors");
 const express = require("express");
-const logger = require("morgan");
-const path = require("path");
+const morgan = require("morgan");
+const app = express();
+
+const PORT = process.env.PORT || 3000;
 
 require("dotenv").config();
 const auth = require("./utils/auth");
 const db = require("./models");
 
-const PORT = process.env.PORT || 3000;
-
-const app = express();
-
-app.use(logger("dev"));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(cors());
+app.use(morgan("dev"));
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({ extended: true }));
 
 app.use(require("./routes"));
+app.use(require("./routes/api"));
 app.use(auth.handleErrors);
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "./shinto-react/build")));
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "./shinto-react/build/index.html"));
-  });
-}
 
 // db.sequelize.sync();
 // app.listen(process.env.PORT || 8080, () => {
@@ -32,7 +27,7 @@ if (process.env.NODE_ENV === "production") {
 // });
 
 db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
+  app.listen(process.env.PORT || PORT, () => {
+    console.log(`server running on ${process.env.PORT || PORT}`);
   });
 });

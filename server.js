@@ -2,6 +2,9 @@ const bodyparser = require("body-parser");
 const cors = require("cors");
 const express = require("express");
 const morgan = require("morgan");
+const path = require("path");
+
+const PORT = process.env.PORT || 3000;
 
 require("dotenv").config();
 const auth = require("./utils/auth");
@@ -13,11 +16,10 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
+app.use(express.static("shinto_react/build"));
 
 app.use(require("./routes"));
-app.get("/", (req, res) => {
-  res.send({ message: "pong" });
-});
+
 app.use(auth.handleErrors);
 
 // db.sequelize.sync();
@@ -27,9 +29,12 @@ app.use(auth.handleErrors);
 //   );
 // });
 
-var PORT = process.env.PORT || 3000;
+app.get("*", (req, res) =>
+  res.sendFile(path.resolve("shinto_react", "build", "index.html"))
+);
+
 db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
+  app.listen(PORT, () => {
+    console.log(`server running on ${process.env.PORT || PORT}`);
   });
 });

@@ -20,7 +20,7 @@ app.use(express.static("shinto_react/build"));
 
 app.use(require("./routes"));
 
-// app.use(auth.handleErrors);
+app.use(auth.handleErrors);
 
 // db.sequelize.sync();
 // app.listen(process.env.PORT || 8080, () => {

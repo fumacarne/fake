@@ -14,10 +14,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(publicPath, "./src/index.html"));
 });
 
-app.listen(port, () => {
-  console.log(`Server is up on port ${port}!`);
-});
-
 require("dotenv").config();
 const auth = require("./utils/auth");
 const db = require("./models");
@@ -34,7 +30,7 @@ app.get("/", (req, res) => {
 app.use(auth.handleErrors);
 
 db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
+  app.listen(port, () => {
+    console.log("Server is up!");
   });
 });

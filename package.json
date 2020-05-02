@@ -11,7 +11,6 @@
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
     "start:dev": "concurrently \"npm run server\" \"npm run shinto_react\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "client": "cd shinto_react && npm run start",
     "server": "nodemon --ignore 'shinto_react/*' server.js",
     "install": "cd shinto_react && npm install",

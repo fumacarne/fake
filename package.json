@@ -13,7 +13,6 @@
     "start:dev": "concurrently \"npm run server\" \"npm run shinto_react\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "cd shinto_react && npm run start",
-    "server": "./node_modules/.bin/nodemon --ignore 'shinto_react/*' server.js",
     "install": "cd shinto_react && npm install",
     "build": "cd shinto_react && npm run build",
     "heroku-postbuild": "npm run build"

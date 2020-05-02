@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "An shared todo app from crushing team task lists",
   "engines": {
-    "node": "6.11.1",
+    "node": "12.14.0",
     "npm": "6.13.4"
   },
   "main": "server.js",

@@ -17,7 +17,9 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 
 app.use(require("./routes"));
-app.use(require("./routes/api"));
+app.get("/", (req, res) => {
+  res.send({ message: "pong" });
+});
 app.use(auth.handleErrors);
 
 // db.sequelize.sync();

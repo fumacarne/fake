@@ -4,7 +4,7 @@ const cors = require("cors");
 const express = require("express");
 const morgan = require("morgan");
 const port = process.env.PORT || 3000;
-const publicPath = path.join(__dirname, "..", "./shinto_react/public");
+const publicPath = path.join(__dirname, "..", "./shinto_react");
 
 require("dotenv").config();
 const auth = require("./utils/auth");
@@ -15,7 +15,7 @@ const app = express();
 app.use(express.static(publicPath));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(publicPath, "index.html"));
+  res.sendFile(path.join(publicPath, "./src/index.html"));
 });
 
 app.listen(port, () => {

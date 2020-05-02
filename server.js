@@ -22,21 +22,6 @@ app.get("/", (req, res) => {
 });
 app.use(auth.handleErrors);
 
-// db.sequelize.sync();
-// app.listen(process.env.PORT || 8080, () => {
-//   console.log(
-//     `[START] app running on http://localhost:${process.env.PORT || 8080}`
-//   );
-// });
-
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static(path.join(__dirname, "./shinto_react/build")));
-
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.join(__dirname, "./shinto_react/build/index.html"));
-//   });
-// }
-
 db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);

@@ -17,9 +17,11 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 
 app.use(require("./routes"));
-app.get("/", (req, res) => {
-  res.send({ message: "pong" });
-});
+
+app.get("*", (req, res) =>
+  res.sendFile(path.resolve("shinto_react", "build", "index.html"))
+);
+
 app.use(auth.handleErrors);
 
 // db.sequelize.sync();
@@ -30,7 +32,7 @@ app.use(auth.handleErrors);
 // });
 
 db.sequelize.sync().then(function() {
-  app.listen(process.env.PORT || PORT, () => {
+  app.listen(PORT, () => {
     console.log(`server running on ${process.env.PORT || PORT}`);
   });
 });

@@ -31,8 +31,11 @@ const csp = require("express-csp-header");
 app.use(
   csp({
     policies: {
-      "default-src": [csp.NONE],
-      "img-src": [csp.SELF]
+      "default-src": [csp.NONE, "https://glacial-dusk-24639.herokuapp.com/"],
+      "img-src": [
+        csp.SELF,
+        "https://glacial-dusk-24639.herokuapp.com/favicon.ico"
+      ]
     }
   })
 );

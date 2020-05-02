@@ -20,11 +20,7 @@ app.use(express.static("shinto_react/build"));
 
 app.use(require("./routes"));
 
-app.get("*", (req, res) =>
-  res.sendFile(path.resolve("shinto_react", "build", "index.html"))
-);
-
-app.use(auth.handleErrors);
+// app.use(auth.handleErrors);
 
 // db.sequelize.sync();
 // app.listen(process.env.PORT || 8080, () => {
@@ -32,6 +28,10 @@ app.use(auth.handleErrors);
 //     `[START] app running on http://localhost:${process.env.PORT || 8080}`
 //   );
 // });
+
+app.get("*", (req, res) =>
+  res.sendFile(path.resolve("shinto_react", "build", "index.html"))
+);
 
 db.sequelize.sync().then(function() {
   app.listen(PORT, () => {

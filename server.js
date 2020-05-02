@@ -20,7 +20,7 @@ app.use(bodyparser.urlencoded({ extended: true }));
 app.use(require("./routes"));
 
 app.get("*", (req, res) =>
-  res.sendFile(path.resolve("shinto_react", "public", "build", "index.html"))
+  res.sendFile(path.resolve("shinto_react", "build", "index.html"))
 );
 
 app.use(auth.handleErrors);

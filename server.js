@@ -6,10 +6,6 @@ const morgan = require("morgan");
 const port = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, "..", "./shinto_react");
 
-require("dotenv").config();
-const auth = require("./utils/auth");
-const db = require("./models");
-
 const app = express();
 
 app.use(express.static(publicPath));
@@ -21,6 +17,10 @@ app.get("*", (req, res) => {
 app.listen(port, () => {
   console.log(`Server is up on port ${port}!`);
 });
+
+require("dotenv").config();
+const auth = require("./utils/auth");
+const db = require("./models");
 
 app.use(cors());
 app.use(morgan("dev"));

@@ -1,36 +1,38 @@
-const path = require("path");
-const bodyparser = require("body-parser");
-const cors = require("cors");
 const express = require("express");
-const morgan = require("morgan");
-const port = process.env.PORT || 3000;
-const publicPath = path.join(__dirname, "..", "./shinto_react");
-
-const app = express();
-
-app.use(express.static(publicPath));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(publicPath, "./src/index.html"));
-});
+const logger = require("morgan");
+const path = require("path");
 
 require("dotenv").config();
 const auth = require("./utils/auth");
 const db = require("./models");
 
-app.use(cors());
-app.use(morgan("dev"));
-app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({ extended: true }));
+const PORT = process.env.PORT || 3000;
+
+const app = express();
+
+app.use(logger("dev"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use(require("./routes"));
-app.get("/", (req, res) => {
-  res.send({ message: "pong" });
-});
 app.use(auth.handleErrors);
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "./shinto-react/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "./shinto-react/build/index.html"));
+  });
+}
+
+// db.sequelize.sync();
+// app.listen(process.env.PORT || 8080, () => {
+//   console.log(
+//     `[START] app running on http://localhost:${process.env.PORT || 8080}`
+//   );
+// });
+
 db.sequelize.sync().then(function() {
-  app.listen(port, () => {
-    console.log("Server is up!");
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
   });
 });

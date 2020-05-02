@@ -8,10 +8,10 @@
   },
   "main": "server.js",
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start": "npm run start:prod",
+    "start:backenddev": "nodemon --ignore 'shinto_react/*'",
     "start:prod": "node server.js",
-    "start:dev": "concurrently \"npm run server\" \"npm run shinto_react\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "concurrently \"nodemon --ignore 'shinto_react/*'\" \"npm run shinto_react\"",
     "client": "cd shinto_react && npm run start",
     "install": "cd shinto_react && npm install",
     "build": "cd shinto_react && npm run build",

@@ -16,6 +16,7 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
+app.use(express.static("shinto_react/build"));
 
 app.use(require("./routes"));
 

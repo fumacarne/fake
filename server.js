@@ -29,13 +29,13 @@ app.use(auth.handleErrors);
 //   );
 // });
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "./shinto_react/build")));
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "./shinto_react/build")));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "./shinto_react/build/index.html"));
-  });
-}
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "./shinto_react/build/index.html"));
+//   });
+// }
 
 db.sequelize.sync().then(function() {
   app.listen(PORT, function() {

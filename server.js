@@ -2,13 +2,14 @@ const bodyparser = require("body-parser");
 const cors = require("cors");
 const express = require("express");
 const morgan = require("morgan");
-const app = express();
 
 const PORT = process.env.PORT || 3000;
 
 require("dotenv").config();
 const auth = require("./utils/auth");
 const db = require("./models");
+
+const app = express();
 
 app.use(cors());
 app.use(morgan("dev"));

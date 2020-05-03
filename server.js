@@ -18,6 +18,7 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
+
 // app.use(express.static("shinto_react/build"));
 
 app.use(require("./routes"));
@@ -34,6 +35,7 @@ app.listen(process.env.PORT || 8080, () => {
   console.log(
     `[START] app running on http://localhost:${process.env.PORT || 8080}`
   );
+
 });
 //
 
